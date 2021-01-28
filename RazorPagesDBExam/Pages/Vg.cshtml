@@ -1,0 +1,47 @@
+﻿@page
+@model RazorPagesDBExam.Pages.VgModel
+@{
+    ViewData["Title"] = "VG-uppgifter";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm text-center">
+            <h1 class="display-4">Vg-uppgifter<br /></h1>
+            <p>Välj ett alternativ nedan</p><hr /><br />
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>
+<div>
+    <p>Hur länge balkongdörren varit öppen per dag och sorterat på då den är längst tid öppen</p><button onclick="window.location.href='Vg?Id=1'">Hämta</button><hr />
+    <p>Sortering på då inne och yttertemperaturen skiljt sig mest och minst </p><button onclick="window.location.href='Vg?Id=2'">Hämta</button><hr />
+</div>
+
+<div class="text-center">
+    <b><i class="@Model.Visibility">(Max = Störst skillnad i temp per dag mellan inne/ute. Min = minst skillnad i temp per dag mellan inne/ute. Resultat: Spannet mellan max och min)</i></b>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm text-center">
+            @if (Model.ReturnData != null)
+            {
+                @foreach (var item in Model.ReturnData)
+                {
+                    <p class="p-3 bg-dark text-white"><i>@item</i></p>
+                }
+            }
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@page
+@model RazorPagesDBExam.Pages.UteModel
+@{
+    ViewData["Title"] = "Väderdata utomhus";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm text-center">
+            <h1 class="display-4">Utomhus<br /></h1>
+            <p>Välj ett alternativ nedan</p><hr /><br />
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>
+<div>
+    <p><b>Medeltemperatur:</b> 10 varmaste och 10 kallaste dagarna</p><button onclick="window.location.href='Ute?Id=1'">Hämta</button><hr />
+    <p><b>Luftfuktighet:</b> 10 fuktigaste och 10 minst fuktiga dagarna</p><button onclick="window.location.href='Ute?Id=2'">Hämta</button><hr />
+    <p><b>Mögelrisk:</b> mögelrisk i procent utomhus</p><button onclick="window.location.href='Ute?Id=3'">Hämta</button><hr />
+    <p><b>Meteorologisk höst:</b> datum för inträffande</p><button onclick="window.location.href='Ute?Id=4'">Hämta</button><hr />
+    <p><b>Meteorologisk vinter:</b> datum för inträffande</p><button onclick="window.location.href='Ute?Id=5'">Hämta</button><hr />
+    <form method="post" autocomplete="off">
+        <p><b>Medeltemperatur:</b> välj datum</p><input type="date" asp-for="@Model.Input" /><button type="submit">Hämta</button><hr />
+        @if (Model.returnDataString != null)
+        {
+            <p class="p-3 bg-dark text-white text-center"><i>@Model.returnDataString</i></p>
+        }
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            
+        </div>
+        <div class="col-sm text-center">
+            
+            @if (Model.ReturnData != null)
+            {
+                @foreach (var item in Model.ReturnData)
+                {
+                    <p class="p-3 bg-dark text-white"><i>@item</i></p>
+                }
+            }
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>

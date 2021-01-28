@@ -1,0 +1,51 @@
+﻿@page
+@model RazorPagesDBExam.Pages.InneModel
+@{
+    ViewData["Title"] = "Väderdata inomhus";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm text-center">
+            <h1 class="display-4">Inomhus<br /></h1>
+            <p>Välj ett alternativ nedan</p><hr /><br />
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>
+<div>
+    <p><b>Medeltemperatur:</b> 10 varmaste och 10 kallaste dagarna</p><button onclick="window.location.href='Inne?Id=1'">Hämta</button><hr />
+    <p><b>Luftfuktighet:</b> 10 fuktigaste och 10 minst fuktiga dagarna</p><button onclick="window.location.href='Inne?Id=2'">Hämta</button><hr />
+    <p><b>Mögelrisk:</b> mögelrisk i procent inomhus</p><button onclick="window.location.href='Inne?Id=3'">Hämta</button><hr />
+    <form method="post" autocomplete="off">
+        <p><b>Medeltemperatur:</b>  välj datum</p><input type="date" asp-for="@Model.Input" /><button type="submit">Hämta</button><hr />
+        @if (Model.ReturnDataString != null)
+        {
+            <p class="p-3 bg-dark text-white text-center"><i>@Model.ReturnDataString</i></p>
+        }
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+     
+        </div>  
+        <div class="col-sm text-center">
+            @if (Model.ReturnData != null)
+            {
+                @foreach (var item in Model.ReturnData)
+                {
+                    <p class="p-3 bg-dark text-white"><i>@item</i></p>
+                }
+            }
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>
